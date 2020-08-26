@@ -3,9 +3,10 @@ const app = express();
 const apiRoutes = require("./api.routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
-const mongoUri = "mongodb://localhost:27017/notes-db";
-mongoose.connect(mongoUri, {
+const mongoUrl = process.env.MONGO_URL;
+mongoose.connect(mongoUrl, {
   keepAlive: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", apiRoutes);
 
-const port = 5000;
+const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(`Notes app listening at http://localhost:${port}`);
+  console.log(`App listening at http://localhost:${port}`);
 });
