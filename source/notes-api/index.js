@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const apiRoutes = require("./api.routes");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const mongoUri = "mongodb://localhost:27017/notes-db";
 mongoose.connect(mongoUri, {
@@ -13,7 +14,8 @@ mongoose.connect(mongoUri, {
 mongoose.connection.on("error", () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", apiRoutes);
 
 const port = 5000;

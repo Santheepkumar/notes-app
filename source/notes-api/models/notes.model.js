@@ -1,45 +1,14 @@
 const mongoose = require("mongoose");
-const User = require("./user.model");
 
-const ContactSchema = mongoose.Schema({
-  name: {
+const NotesSchema = mongoose.Schema({
+  title: {
     type: String,
-    required: true
+    required: true,
   },
-  designation: {
-    type: String
-  },
-  phone: {
-    type: Number
-  },
-  email: {
+  notes: {
     type: String,
-    required: true
+    required: true,
   },
-  status: {
-    type: String,
-    required: true
-  },
-  userAccount: {
-    type: mongoose.Types.ObjectId,
-    ref: "User"
-  },
-  createdBy: {
-    type: mongoose.Types.ObjectId,
-    ref: "User"
-  },
-  updatedBy: {
-    type: mongoose.Types.ObjectId,
-    ref: "User"
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
 });
 
-module.exports = mongoose.model("Contact", ContactSchema, "contacts");
+module.exports = mongoose.model("Notes", NotesSchema, "notes");
