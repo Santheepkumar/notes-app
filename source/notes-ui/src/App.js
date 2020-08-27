@@ -1,10 +1,18 @@
 import React from "react";
+import { Route, HashRouter, Switch, Redirect } from "react-router-dom";
+import Routes from "./components/Route";
 
 function App() {
   return (
-    <div className='App'>
-      <h1 className='flex justify-center'>Cool Notes App</h1>
-    </div>
+    <HashRouter>
+      <div className='h-screen' style={{ background: "#111" }}>
+        <Switch>
+          <Route path='/notes' component={Routes} />
+
+          <Route exact path='/' component={() => <Redirect to='/notes' />} />
+        </Switch>
+      </div>
+    </HashRouter>
   );
 }
 
