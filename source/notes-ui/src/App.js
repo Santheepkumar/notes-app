@@ -5,7 +5,7 @@ import Routes from "./components/Route";
 function App() {
   return (
     <HashRouter>
-      <div className='h-screen' style={{ background: "#111" }}>
+      <div className='' style={{ background: "#111" }}>
         <Switch>
           <Route path='/notes' component={Routes} />
 
