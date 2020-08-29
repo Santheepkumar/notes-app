@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../common/Header";
 import { motion } from "framer-motion";
+import NotesController from "./NotesController";
 
 function NotesForm() {
   return (
@@ -97,6 +98,7 @@ function NotesForm() {
                 </div>
               </motion.div>
             </div>
+            <NotesController />
             <div className=' flex justify-center mt-10'>
               <button
                 type='submit'

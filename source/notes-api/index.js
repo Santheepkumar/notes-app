@@ -3,6 +3,7 @@ const app = express();
 const apiRoutes = require("./api.routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv").config();
 
 const mongoUrl = process.env.MONGO_URL;
@@ -15,6 +16,7 @@ mongoose.connect(mongoUrl, {
 mongoose.connection.on("error", () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", apiRoutes);
