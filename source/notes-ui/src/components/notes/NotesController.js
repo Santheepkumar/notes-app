@@ -10,7 +10,7 @@ function NotesController() {
   }, []);
   console.log("apiData", data);
 
-  return <div>{data}</div>;
+  return <div>hello</div>;
 }
 
 export default NotesController;
