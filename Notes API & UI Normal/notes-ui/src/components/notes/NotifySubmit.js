@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function NotifySubmit(props) {
-  const { success} = props;
+  const { success } = props;
   return (
     <div>
       {success.status === "SUCCESS" ? (
@@ -32,7 +32,8 @@ function NotifySubmit(props) {
             style={{ color: "#EA425C" }}
             initial={{ scale: 10 }}
             animate={{ scale: 1 }}>
-            {success.notes.title + " - "} Added
+            {success.notes.title + " - "}{" "}
+            {success.from === "Update" ? "Updated" : "Added"}
           </motion.div>
         </div>
       ) : success.status === "FAILED" ? (
