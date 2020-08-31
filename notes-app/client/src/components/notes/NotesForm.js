@@ -11,7 +11,7 @@ function NotesForm() {
     notes: {},
   });
   function HandleSubmit(values, { setSubmitting }) {
-    const API_URL = "http://localhost:5000/api/notes";
+    const API_URL = "/api/notes";
     axios
       .post(API_URL, values)
       .then((res) => {

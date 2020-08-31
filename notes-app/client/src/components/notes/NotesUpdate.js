@@ -17,7 +17,7 @@ function NotesUpdate() {
     from: "Update",
   });
   const { id } = useParams();
-  const API_URL = `http://localhost:5000/api/notes/${id}`;
+  const API_URL = `/api/notes/${id}`;
 
   useEffect(() => {
     axios

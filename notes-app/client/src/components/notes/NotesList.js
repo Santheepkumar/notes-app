@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 function NotesList() {
   const [Notes, setNotes] = useState({ status: "", notes: [] });
   const history = useHistory();
-  const API_URL = "http://localhost:5000/api/notes";
+  const API_URL = "/api/notes";
   useEffect(() => {
     axios
       .get(API_URL)
