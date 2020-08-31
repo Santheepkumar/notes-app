@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Header(props) {
   return (
-    <div className='bg-white-800 '>
+    <div className=''>
       <div className='flex justify-around'>
         <motion.div className='flex p-4 justify-center'>
           <motion.h1
@@ -47,13 +47,26 @@ function Header(props) {
         animate={{ y: 0 }}
         transition={{ type: "tween", duration: "0.5" }}
       />
-      <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 1 }}>
-        <Link
-          to={props.link}
-          className='cursor-pointer p-2 text-2xl underline flex justify-center font-semibold mr-3 text-white'>
-          {props.linkName}
-        </Link>
-      </motion.div>
+
+      <div className='flex justify-center'>
+        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 1 }}>
+          <Link
+            to={props.link}
+            className='cursor-pointer p-2 text-2xl underline flex justify-center font-semibold mr-3 text-white'>
+            {props.linkName}
+          </Link>
+        </motion.div>
+        <motion.div
+          className='flex justify-center'
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1 }}>
+          <Link
+            to='/notes/list'
+            className='cursor-pointer p-2 text-2xl underline flex justify-center font-semibold mr-3 text-white'>
+            {props.secondLink}
+          </Link>
+        </motion.div>
+      </div>
     </div>
   );
 }

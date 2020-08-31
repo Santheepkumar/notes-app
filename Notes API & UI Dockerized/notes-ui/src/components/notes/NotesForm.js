@@ -11,7 +11,7 @@ function NotesForm() {
     notes: {},
   });
   function HandleSubmit(values, { setSubmitting }) {
-    const API_URL = "http://localhost:5000/api/notes";
+    const API_URL = "http://localhost:5002/api/notes";
     axios
       .post(API_URL, values)
       .then((res) => {
@@ -43,23 +43,23 @@ function NotesForm() {
         }}>
         <Form>
           <motion.div
-            className='h-screen'
+            className=''
             initial={{ scale: 3 }}
             animate={{ scale: 1 }}>
             <div className='mt-5 xl:border border-gray-700 shadow-lg xl:mx-64 xl:p-10 rounded-full  '>
-              {/* After Submission */}
               <NotifySubmit success={success} />
+              {/* After Submission */}
               {/* Form */}
               <div className='mt-5 m-5'>
                 <motion.div
                   className='flex justify-center'
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 1 }}>
-                  <div className='relative text-white mb-4'>
+                  <div className='relative text-orange-700'>
                     <Field
                       name='title'
                       placeholder='Title'
-                      className='h-10 px-5 pr-20 rounded-md text-sm focus:outline-none  border border-pink-300'
+                      className='h-10 px-5 pr-20 rounded-md text-sm focus:outline-none border border-pink-300'
                       style={{ background: "#111" }}
                     />
                     <div className='absolute right-0 top-0 mt-3 mr-4'>
@@ -98,15 +98,16 @@ function NotesForm() {
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 1 }}
-                    className='relative text-white'>
+                    className='relative text-orange-700'>
                     <Field
                       name='notes'
                       as='textarea'
-                      className='rounded-md px-2 pt-2 pr-10 focus:outline-none border border-pink-300'
+                      className='rounded-md px-5 pt-2 pr-10 focus:outline-none border border-pink-300'
                       style={{ background: "#111" }}
                       placeholder='Notes'
                       rows='8'
-                      cols='40'></Field>
+                      cols='40'
+                    />
                     <div className='absolute right-0 top-0 mt-3 mr-4'>
                       <motion.svg
                         width='1.5em'

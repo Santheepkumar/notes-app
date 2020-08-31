@@ -12,6 +12,6 @@ RUN npm i -g yarn
 
 RUN yarn 
 
-EXPOSE 5000
+EXPOSE 5002
 
 CMD ["yarn","start"]

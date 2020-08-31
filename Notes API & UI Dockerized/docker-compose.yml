@@ -9,7 +9,7 @@ services:
       - PORT=$PORT
       - MONGO_URL=$MONGO_URL
     ports:
-      - "5000:5000"
+      - "5002:5002"
     links:
       - mongo
   mongo:
@@ -25,7 +25,7 @@ services:
     restart: always
     build: ./notes-ui
     ports:
-      - "3000:3000"
+      - "3002:3000"
     tty: true
     volumes:
       - ./notes-ui:/apps/notes-ui
