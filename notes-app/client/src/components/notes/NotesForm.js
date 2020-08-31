@@ -1,31 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
 import { motion } from "framer-motion";
 import { Field, Formik, Form } from "formik";
 import axios from "axios";
 import NotifySubmit from "./NotifySubmit";
+import Loading from "../common/Loading";
 
 function NotesForm() {
   const [success, setSuccess] = useState({
     status: "",
     notes: {},
+    loading: undefined,
   });
+  useEffect(() => {
+    console.log(true);
+  }, [success]);
   function HandleSubmit(values, { setSubmitting }) {
     const API_URL = "/api/notes";
     axios
       .post(API_URL, values)
       .then((res) => {
-        console.log("res", res);
         setSubmitting(false);
         setSuccess({
           status: "SUCCESS",
           notes: res.data,
+          loading: false,
         });
       })
       .catch((error) => {
         setSubmitting(false);
         setSuccess({ status: "FAILED", notes: {} });
       });
+  }
+  if (success.loading === true) {
+    return <Loading />;
   }
   return (
     <div>
@@ -39,7 +47,8 @@ function NotesForm() {
         enableReinitialize
         initialValues={{ title: "", notes: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          HandleSubmit(values, { setSubmitting });
+          setSuccess({ status: "", notes: {}, loading: true });
+          HandleSubmit(values, { setSubmitting }, success);
         }}>
         <Form>
           <motion.div

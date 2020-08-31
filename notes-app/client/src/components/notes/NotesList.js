@@ -3,9 +3,10 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import Header from "../common/Header";
 import { useHistory } from "react-router-dom";
+import Loading from "../common/Loading";
 
 function NotesList() {
-  const [Notes, setNotes] = useState({ status: "", notes: [] });
+  const [Notes, setNotes] = useState({ status: "wqed", notes: [] });
   const history = useHistory();
   const API_URL = "/api/notes";
   useEffect(() => {
@@ -24,6 +25,11 @@ function NotesList() {
     axios.delete(`${API_URL}/${id}`);
   }
   const { notes = [] } = Notes;
+
+  if (Notes.status === "wqed") {
+    return <Loading />;
+  }
+
   return (
     <motion.div className='' initial={{ scale: 2 }} animate={{ scale: 1 }}>
       <Header headLeft='NOTES' headRight='LIST' link='/notes' linkName='HOME' />
