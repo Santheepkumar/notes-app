@@ -10,6 +10,7 @@ const load = (req, form) => {
 const createNotes = (req, res, next) => {
   let notes;
   notes = new Notes();
+  notes.user = req.user;
   load(req, notes);
 
   return notes
@@ -27,7 +28,8 @@ const getNotes = (req, res, next) => {
 
 // get all notes
 const getAllNotes = (req, res, next) => {
-  Notes.find({})
+  currentUser = req.user;
+  Notes.find({ user: currentUser })
     .then((notes) => res.json(notes))
     .catch(next);
 };
@@ -46,6 +48,7 @@ const updateNotes = (req, res, next) => {
     .then((note) => {
       notes = note;
       load(req, notes);
+      notes.user = req.user;
       return notes.save();
     })
     .then((notes) => res.json(notes))
