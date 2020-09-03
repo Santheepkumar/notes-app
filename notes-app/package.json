@@ -8,7 +8,7 @@
     "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "author": "Santheepkumar",
+  "author": "Santheepkuma",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
