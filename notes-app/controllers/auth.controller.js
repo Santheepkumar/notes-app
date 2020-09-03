@@ -1,6 +1,6 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const { secret } = require("../config");
+const { secret = process.env.SECRET } = require("../config");
 
 // handle errors
 const handleErrors = (err) => {

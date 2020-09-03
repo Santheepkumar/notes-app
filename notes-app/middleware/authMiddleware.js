@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const path = require("path");
-const { secret } = require("../config");
+const { secret = process.env.SECRET } = require("../config");
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;

@@ -5,7 +5,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const { port, mongoDbUrl } = require("./config");
+const {
+  port = process.env.PORT,
+  mongoDbUrl = process.env.MONGO_URL,
+} = require("./config");
 mongoose.connect(mongoDbUrl, {
   keepAlive: true,
   useNewUrlParser: true,
